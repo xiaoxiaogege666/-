@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        <div style="font-size: 25px;">Time has Passed</div>
+        <p id="test" style="color: red;">0</p>
+        <button id="btn" style="width: 200px;height:50px;">暂停/继续</button>
+    </div>
+</body>
+<style>
+    #container {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+    }
+</style>
+<script>
+
+    let time = 0;
+    let counter = null;
+    let div = document.getElementById("test");
+    let button = document.getElementById("btn");
+    const startCounting = () => {
+        counter = setInterval(() => {
+            time += 1;
+            div.innerHTML = time + "s";
+        }, 1000);
+    };
+    const startOrStop = () => {
+        if (counter) {
+            clearInterval(counter);
+            counter = null;
+        } else {
+            startCounting();
+        }
+    };
+    button.onclick = function () {
+        startOrStop();
+    };
+</script>
+
+</html>
